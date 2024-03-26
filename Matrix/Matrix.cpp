@@ -134,19 +134,19 @@ double Matrix::determinant()const {
 	return (*this).find_det();
 }
 
-// теорема лапласа, разложение по 0 столбцу
+//  С‚РµРѕСЂРµРјР° Р»Р°РїР»Р°СЃР°, СЂР°Р·Р»РѕР¶РµРЅРёРµ РїРѕ 0 СЃС‚РѕР»Р±С†Сѓ
 double Matrix::find_det()const {
 	if (n == 1) return this->mtr[0][0];
 	else if (n == 2) return this->mtr[0][0]* this->mtr[1][1]- this->mtr[1][0] * this->mtr[0][1];
 	else {
 		double det = 0;
-		// i - номер строки в 0 столбце
+		// i - РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё РІ 0 СЃС‚РѕР»Р±С†Рµ
 		for (int i = 0; i < n; i++) {
 			Matrix tmp(n-1, n-1);
 			int l = 0;
-			// l - номер строки в миноре
-			// column - номер столбца в миноре
-			// line - номер строки в матрице
+			// l - РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё РІ РјРёРЅРѕСЂРµ
+			// column - РЅРѕРјРµСЂ СЃС‚РѕР»Р±С†Р° РІ РјРёРЅРѕСЂРµ
+			// line - РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё РІ РјaС‚СЂРёС†Рµ
 			for (int line = 0; line < n; line++) {
 				if (line == i) continue;
 				for (int column = 0; column < n - 1; column++) {
